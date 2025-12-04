@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { MapContainer, TileLayer, FeatureGroup, GeoJSON, useMap, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-draw/dist/leaflet.draw.css";
@@ -193,7 +193,7 @@ function validateLayout({ site, blocks, minAisle, boundaryClearance, turnRadius 
 }
  
 // Heatmap generation (simple: inverse distance to nearest source)
-function generateHeatSquares(site, sources, cellM, mode) {
+function generateHeatSquares(site, sources, cellM) {
   if (!site || sources.length === 0) return turf.featureCollection([]);
   const bbox = turf.bbox(site);
   const grid = turf.squareGrid(bbox, metersToKm(cellM), { units: "kilometers" });
@@ -217,9 +217,9 @@ function layerToFeature(layer) {
 // Controls (UI panel)
 // -----------------------------
 function Controls({
-  site, setSite,
+  site,
   blocks, setBlocks,
-  validation, setValidation,
+  setValidation,
   heat, setHeat,
   snapGrid, setSnapGrid,
   gridSize, setGridSize,
@@ -238,7 +238,12 @@ function Controls({
   const canGenerate = !!site;
  
   return (
-    <div className="absolute top-4 left-4 z-[1000] w-[380px] max-h-[90vh] overflow-auto bg-white/90 backdrop-blur rounded-2xl shadow-xl p-4 space-y-4">
+    <div 
+      className="absolute top-4 left-4 z-[1000] w-[380px] max-h-[90vh] overflow-auto bg-white/90 backdrop-blur rounded-2xl shadow-xl p-4 space-y-4"
+      onMouseDown={(e) => e.stopPropagation()}
+      onDoubleClick={(e) => e.stopPropagation()}
+      onWheel={(e) => e.stopPropagation()}
+    >
       <div className="flex items-start justify-between">
         <h2 className="text-lg font-semibold">F&B Plant Layout</h2>
         <span className="text-xs text-gray-500">Generative · Draw · Measure</span>
@@ -360,7 +365,7 @@ function HeatmapPanel({ site, heat, setHeat }) {
       <div className="flex gap-2">
         <button className="px-3 py-2 rounded-xl text-sm font-medium shadow bg-white border" onClick={()=>{
           if (!site || (heat.sources?.length||0)===0) return;
-          const squares = generateHeatSquares(site, heat.sources, heat.cell||10, heat.mode||"flow");
+          const squares = generateHeatSquares(site, heat.sources, heat.cell||10);
           setHeat({ ...heat, squares });
         }}>Generate Heat</button>
         <button className="px-3 py-2 rounded-xl text-sm font-medium shadow bg-white border" onClick={()=>setHeat({ mode:"flow", cell:10, sources:[], squares:turf.featureCollection([]), adding:false })}>Clear Heat</button>
@@ -560,7 +565,7 @@ function MapWithDraw({ site, setSite, blocks, setBlocks, validation, heat, setHe
           circlemarker: false,
           marker: false,
         }}
-        edit={{ edit: true, remove: true }}
+        edit={{ edit: {}, remove: {} }}
       />
  
       {/* Site */}
@@ -629,35 +634,33 @@ export default function App() {
       const issues = validateLayout({ site: siteTest, blocks: turf.featureCollection([a,b]), minAisle: 0, boundaryClearance: 0, turnRadius: 0 });
       console.assert(Array.isArray(issues), "validateLayout returns issues array");
     } catch (e) {
-      // eslint-disable-next-line no-console
       console.warn("Dev tests failed:", e);
     }
   }
  
   return (
     <div className="w-full h-screen relative">
-      <Controls
-        site={site}
-        setSite={setSite}
-        blocks={blocks}
-        setBlocks={setBlocks}
-        validation={validation}
-        setValidation={setValidation}
-        heat={heat}
-        setHeat={setHeat}
-        snapGrid={snapGrid}
-        setSnapGrid={setSnapGrid}
-        gridSize={gridSize}
-        setGridSize={setGridSize}
-        orthogonal={orthogonal}
-        setOrthogonal={setOrthogonal}
-      />
- 
       <MapContainer center={[defaultCenter.lat, defaultCenter.lng]} zoom={16} scrollWheelZoom className="w-full h-full" id="map-root">
+        <Controls
+          site={site}
+          setSite={setSite}
+          blocks={blocks}
+          setBlocks={setBlocks}
+          validation={validation}
+          setValidation={setValidation}
+          heat={heat}
+          setHeat={setHeat}
+          snapGrid={snapGrid}
+          setSnapGrid={setSnapGrid}
+          gridSize={gridSize}
+          setGridSize={setGridSize}
+          orthogonal={orthogonal}
+          setOrthogonal={setOrthogonal}
+        />
         {/* Google Maps Satellite Imagery */}
         <TileLayer
           attribution='&copy; Google Maps'
-          url=https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}
+          url="https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}"
         />
  
         <MapWithDraw
