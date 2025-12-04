@@ -1,3 +1,17 @@
+:root {
+  --color-gray-500: #6b7280;
+  --color-blue-600: #2563eb;
+  --color-emerald-500: #10b981;
+  --color-amber-500: #f59e0b;
+  --color-violet-600: #7c3aed;
+  --color-gray-300: #ddd;
+  --color-sky-500: #0ea5e9;
+  --color-red-500: #ef4444;
+  --color-red-700: #dc2626;
+  --color-red-800: #b91c1c;
+  --color-gray-900: #111827;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -61,7 +61,7 @@ export function MapWithDraw({ site, setSite, blocks, setBlocks, validation, heat
     if (activeLayer) {
       activeLayer.bindPopup(`<div style="display:flex;flex-direction:column;gap:8px">`+
         `<strong>${layerType}</strong>`+
-        `<button id="setSiteBtn" style="padding:6px 10px;border:1px solid #ddd;border-radius:10px;cursor:pointer">Set as Site</button>`+
+        `<button id="setSiteBtn" style="padding:6px 10px;border:1px solid var(--color-gray-300);border-radius:10px;cursor:pointer">Set as Site</button>`+
       `</div>`);
       activeLayer.openPopup(); // Explicitly open the popup after binding
       activeLayer.on("popupopen", () => {
@@ -88,7 +88,7 @@ export function MapWithDraw({ site, setSite, blocks, setBlocks, validation, heat
   // Styling functions
   const blockStyle = (f) => {
     const t = PROCESS_TYPES.find((x) => x.id === f.properties?.type);
-    return { color: t?.color || "#0ea5e9", weight: 1, fillOpacity: 0.35 };
+    return { color: t?.color || "var(--color-sky-500)", weight: 1, fillOpacity: 0.35 };
   };
  
   const heatStyle = (f) => {
@@ -99,11 +99,11 @@ export function MapWithDraw({ site, setSite, blocks, setBlocks, validation, heat
   };
  
   const issueStyle = (k) => ({
-    clash: { color: "#ef4444", weight: 2, fillOpacity: 0.2 },
-    aisle: { color: "#dc2626", weight: 1.5, dashArray: "4 4", fillOpacity: 0.15 },
-    boundary: { color: "#b91c1c", weight: 2, dashArray: "2 6", fillOpacity: 0.0 },
-    turning: { color: "#111827", weight: 2, dashArray: "6 6", fillOpacity: 0.0 },
-  }[k] || { color: "#ef4444" });
+    clash: { color: "var(--color-red-500)", weight: 2, fillOpacity: 0.2 },
+    aisle: { color: "var(--color-red-700)", weight: 1.5, dashArray: "4 4", fillOpacity: 0.15 },
+    boundary: { color: "var(--color-red-800)", weight: 2, dashArray: "2 6", fillOpacity: 0.0 },
+    turning: { color: "var(--color-gray-900)", weight: 2, dashArray: "6 6", fillOpacity: 0.0 },
+  }[k] || { color: "var(--color-red-500)" });
  
   return (
     <FeatureGroup ref={onFGReady}>
@@ -113,9 +113,9 @@ export function MapWithDraw({ site, setSite, blocks, setBlocks, validation, heat
         onEdited={onEdited}
         onDeleted={onDeleted}
         draw={{
-          polygon: { allowIntersection: false, showArea: true, metric: true, repeatMode: true, shapeOptions: { color: "#2563eb" } },
-          polyline: { metric: true, shapeOptions: { color: "#10b981" } },
-          rectangle: { showArea: true, metric: true, shapeOptions: { color: "#f59e0b" } },
+          polygon: { allowIntersection: false, showArea: true, metric: true, repeatMode: true, shapeOptions: { color: "var(--color-blue-600)" } },
+          polyline: { metric: true, shapeOptions: { color: "var(--color-emerald-500)" } },
+          rectangle: { showArea: true, metric: true, shapeOptions: { color: "var(--color-amber-500)" } },
           circle: false,
           circlemarker: false,
           marker: false,
@@ -124,7 +124,7 @@ export function MapWithDraw({ site, setSite, blocks, setBlocks, validation, heat
       />
  
       {/* Site */}
-      {site && <GeoJSON data={site} style={{ color: "#111827", weight: 2, fillOpacity: 0.08 }} />}
+      {site && <GeoJSON data={site} style={{ color: "var(--color-gray-900)", weight: 2, fillOpacity: 0.08 }} />}
  
       {/* Blocks */}
       {blocks && blocks.features?.length > 0 && <GeoJSON data={blocks} style={blockStyle} />}
