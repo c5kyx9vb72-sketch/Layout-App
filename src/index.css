@@ -1,15 +1,15 @@
 :root {
-  --color-gray-500: #6b7280;
-  --color-blue-600: #2563eb;
-  --color-emerald-500: #10b981;
-  --color-amber-500: #f59e0b;
-  --color-violet-600: #7c3aed;
-  --color-gray-300: #ddd;
-  --color-sky-500: #0ea5e9;
-  --color-red-500: #ef4444;
-  --color-red-700: #dc2626;
-  --color-red-800: #b91c1c;
-  --color-gray-900: #111827;
+  --color-gray-500: #6b7280; /* Used in: src/constants.js -> PROCESS_TYPES (receiving) */
+  --color-blue-600: #2563eb; /* Used in: src/constants.js -> PROCESS_TYPES (processing), src/components/MapWithDraw.jsx -> EditControl (polygon draw color) */
+  --color-emerald-500: #10b981; /* Used in: src/constants.js -> PROCESS_TYPES (packaging), src/components/MapWithDraw.jsx -> EditControl (polyline draw color) */
+  --color-amber-500: #f59e0b; /* Used in: src/constants.js -> PROCESS_TYPES (utilities), src/components/MapWithDraw.jsx -> EditControl (rectangle draw color) */
+  --color-violet-600: #7c3aed; /* Used in: src/constants.js -> PROCESS_TYPES (warehouse) */
+  --color-gray-300: #ddd; /* Used in: src/components/MapWithDraw.jsx -> Popup button border (setSiteBtn) */
+  --color-sky-500: #0ea5e9; /* Used in: src/components/MapWithDraw.jsx -> blockStyle (default block color) */
+  --color-red-500: #ef4444; /* Used in: src/components/MapWithDraw.jsx -> issueStyle (clash, default fallback) */
+  --color-red-700: #dc2626; /* Used in: src/components/MapWithDraw.jsx -> issueStyle (aisle) */
+  --color-red-800: #b91c1c; /* Used in: src/components/MapWithDraw.jsx -> issueStyle (boundary) */
+  --color-gray-900: #111827; /* Used in: src/components/MapWithDraw.jsx -> issueStyle (turning), src/components/MapWithDraw.jsx -> GeoJSON (site outline) */
 }
 
 @tailwind base;
