@@ -70,5 +70,6 @@ test.describe('Map Interaction', () => {
     
     // 4. Verify "Generate Layout" button is enabled
     const genBtn = page.getByRole('button', { name: 'Generate Layout' });
+    await expect(genBtn).toBeEnabled();
   });
 });

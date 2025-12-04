@@ -19,4 +19,12 @@ module.exports = {
     'react/prop-types': 'off', // Disable prop-types validation for this prototype
     'no-unused-vars': ['warn', { varsIgnorePattern: '^_', argsIgnorePattern: '^_' }],
   },
+  overrides: [
+    {
+      files: ['playwright.config.js'],
+      env: {
+        node: true,
+      },
+    },
+  ],
 }
