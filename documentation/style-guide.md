@@ -15,9 +15,9 @@ This document serves as the authoritative style guide for the **Layout App** pro
 
 ## 2. File Structure & Naming
 
-*   **Component Filenames:** Use **kebab-case** for all component files (e.g., `map-with-draw.jsx`, `heatmap-panel.jsx`).
-    *   *Rationale:* Avoids case-sensitivity issues on different OS file systems.
-*   **Component Names:** Use **PascalCase** for the actual React component function names (e.g., `function MapWithDraw()`).
+*   **Component Filenames:** Use **PascalCase** for all component files (e.g., `MapWithDraw.jsx`, `ControlSection.jsx`).
+    *   *Rationale:* Aligns file names with component names, improving clarity and tool integration.
+*   **Component Names:** Always use **PascalCase** for the actual React component function names (e.g., `function MapWithDraw()`).
 *   **Utility Files:** Use **camelCase** for utility files (e.g., `geometry.js`) and **kebab-case** for folders if they don't export a single module.
 *   **Directories:**
     *   `src/components/`: UI and functional React components.
@@ -41,7 +41,7 @@ This document serves as the authoritative style guide for the **Layout App** pro
     ```
 *   **State Placement:**
     *   Local UI state (e.g., "is dropdown open") stays in the component.
-    *   Data state (e.g., "site polygon", "generated blocks") should be lifted to `App.jsx` (or a Context provider) to be shared between the `Controls` UI and the `Map` visualization.
+    *   Data state (e.g., "site polygon", "generated blocks") should be lifted to `App.jsx` (or a Context provider) to be shared between the `ControlSection` UI and the `Map` visualization.
 
 ### Event Handlers
 *   Prefix event handler props with `on` (e.g., `onCreated`, `onDeleted`).
@@ -66,6 +66,7 @@ This document serves as the authoritative style guide for the **Layout App** pro
 ## 6. CSS & Styling (Tailwind)
 
 *   **Utility-First:** Use Tailwind classes for all styling. Avoid writing custom CSS files unless absolutely necessary for global resets or complex Leaflet overrides.
+*   **CSS Variables for Colors:** Hardcoded color values should be extracted into CSS variables defined in `src/index.css` within the `:root` selector. These variables should have logical, semantic names (e.g., `--color-primary`, `--color-gray-500`) and be used in components via `var(--color-name)`.
 *   **Leaflet Overrides:** If Leaflet styles need modification, do so in `index.css` or via specific class names passed to `MapContainer`.
 *   **Z-Index:** Be mindful of z-indexes for floating panels (`z-[1000]`) to ensure they appear above the map tiles.
 
@@ -75,6 +76,7 @@ This document serves as the authoritative style guide for the **Layout App** pro
 *   **Comments:**
     *   Use comments to explain **Why**, not **What**.
     *   Document complex geometric logic or algorithm steps (e.g., "Snap + Ortho post-process").
+    *   For CSS variables, include comments in `src/index.css` detailing where each variable is used (file and function).
 *   **Linting:** Ensure code passes the ESLint rules defined in `.eslintrc.cjs`. Remove unused variables and imports.
 
 ## 8. Import Order
