@@ -31,7 +31,7 @@ export function ControlSection({
  
   return (
     <div 
-      className="absolute top-4 left-4 z-[1000] w-[380px] max-h-[90vh] overflow-auto bg-white/90 backdrop-blur rounded-2xl shadow-xl p-4 space-y-4"
+      className="absolute top-4 left-4 z-[1000] w-[450px] max-h-[90vh] overflow-auto bg-white/90 backdrop-blur rounded-2xl shadow-xl p-4 space-y-4"
       onMouseDown={(e) => e.stopPropagation()}
       onDoubleClick={(e) => e.stopPropagation()}
       onWheel={(e) => e.stopPropagation()}
@@ -59,7 +59,7 @@ export function ControlSection({
       </div>
  
       {/* Generation params */}
-      <div className="grid grid-cols-2 gap-3 text-sm">
+      <div className="grid grid-cols-3 gap-3 text-sm">
         <label className="flex flex-col">Aisle (m)
           <input type="number" className="mt-1 rounded border p-1" value={aisle} onChange={(e)=>setAisle(Number(e.target.value)||0)} />
         </label>
@@ -72,17 +72,18 @@ export function ControlSection({
         <label className="flex flex-col">Max Blocks
           <input type="number" className="mt-1 rounded border p-1" value={maxBlocks} onChange={(e)=>setMaxBlocks(Number(e.target.value)||0)} />
         </label>
-        <label className="flex flex-col col-span-2">Random Seed
+        <label className="flex flex-col col-span-1">Random Seed
           <input type="number" className="mt-1 rounded border p-1" value={seed} onChange={(e)=>setSeed(Number(e.target.value)||0)} />
         </label>
       </div>
  
       {/* Snapping & grid (bound to parent state) */}
-      <div className="grid grid-cols-2 gap-3 text-sm">
+      <div className="grid grid-cols-3 gap-3 text-sm items-center">
         <label className="flex items-center gap-2"><input type="checkbox" checked={snapGrid} onChange={e=>setSnapGrid(e.target.checked)} /> Snap to grid</label>
         <label className="flex items-center gap-2"><input type="checkbox" checked={orthogonal} onChange={e=>setOrthogonal(e.target.checked)} /> Ortho edges</label>
-        <label className="flex flex-col">Grid (m)
-          <input type="number" className="mt-1 rounded border p-1" value={gridSize} onChange={(e)=>setGridSize(Number(e.target.value)||1)} />
+        <label className="flex items-center justify-between gap-2">
+          <span>Grid (m)</span>
+          <input type="number" className="rounded border p-1 w-1/2" value={gridSize} onChange={(e)=>setGridSize(Number(e.target.value)||1)} />
         </label>
       </div>
  
