@@ -8,7 +8,7 @@ import { ExportMenu } from "./export-menu";
 // -----------------------------
 // Controls (UI panel)
 // -----------------------------
-export function Controls({
+export function ControlSection({
   site,
   blocks, setBlocks,
   setValidation,

@@ -3,7 +3,7 @@ import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-draw/dist/leaflet.draw.css";
 import * as turf from "@turf/turf";
-import { Controls } from "./components/Controls";
+import { ControlSection } from "./components/control-section";
 import { MapWithDraw } from "./components/map-with-draw";
 import { buildRect, gridCenters, generateBlocks, snapLngLat, snapFeatureToGrid, validateLayout } from "./utils/geometry";
  
@@ -62,7 +62,7 @@ export default function App() {
   return (
     <div className="w-full h-screen relative">
       <MapContainer center={[defaultCenter.lat, defaultCenter.lng]} zoom={16} scrollWheelZoom className="w-full h-full" id="map-root">
-        <Controls
+        <ControlSection
           site={site}
           setSite={setSite}
           blocks={blocks}
