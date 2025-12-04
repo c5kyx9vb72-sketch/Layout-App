@@ -63,6 +63,7 @@ export function MapWithDraw({ site, setSite, blocks, setBlocks, validation, heat
         `<strong>${layerType}</strong>`+
         `<button id="setSiteBtn" style="padding:6px 10px;border:1px solid #ddd;border-radius:10px;cursor:pointer">Set as Site</button>`+
       `</div>`);
+      activeLayer.openPopup(); // Explicitly open the popup after binding
       activeLayer.on("popupopen", () => {
         const btn = document.getElementById("setSiteBtn");
         if (btn) btn.onclick = () => {
