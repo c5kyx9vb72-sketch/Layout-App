@@ -113,7 +113,7 @@ export function MapWithDraw({ site, setSite, blocks, setBlocks, validation, heat
         onEdited={onEdited}
         onDeleted={onDeleted}
         draw={{
-          polygon: { allowIntersection: false, showArea: true, metric: true, shapeOptions: { color: "#2563eb" } },
+          polygon: { allowIntersection: false, showArea: true, metric: true, repeatMode: true, shapeOptions: { color: "#2563eb" } },
           polyline: { metric: true, shapeOptions: { color: "#10b981" } },
           rectangle: { showArea: true, metric: true, shapeOptions: { color: "#f59e0b" } },
           circle: false,
