@@ -2,8 +2,8 @@ import { useState } from "react";
 import * as turf from "@turf/turf";
 import { PROCESS_TYPES, DEFAULT_TRUCK_TURN_RADIUS_M } from "../constants";
 import { generateBlocks, validateLayout } from "../utils/geometry";
-import { HeatmapPanel } from "./HeatmapPanel";
-import { ExportMenu } from "./ExportMenu";
+import { HeatmapPanel } from "./heatmap-panel";
+import { ExportMenu } from "./export-menu";
 
 // -----------------------------
 // Controls (UI panel)

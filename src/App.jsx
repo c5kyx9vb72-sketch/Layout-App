@@ -4,7 +4,7 @@ import "leaflet/dist/leaflet.css";
 import "leaflet-draw/dist/leaflet.draw.css";
 import * as turf from "@turf/turf";
 import { Controls } from "./components/Controls";
-import { MapWithDraw } from "./components/MapWithDraw";
+import { MapWithDraw } from "./components/map-with-draw";
 import { buildRect, gridCenters, generateBlocks, snapLngLat, snapFeatureToGrid, validateLayout } from "./utils/geometry";
  
 /**
