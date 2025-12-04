@@ -9,7 +9,7 @@ import html2canvas from "html2canvas"; // Map to canvas for PDF
 // -----------------------------
 // Export / Import / Print
 // -----------------------------
-export function ExportMenu({ site, blocks }) {
+export function ExportSection({ site, blocks }) {
   const map = useMap();
   const exportGeoJSON = () => {
     const out = turf.featureCollection([

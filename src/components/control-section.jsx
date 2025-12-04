@@ -3,7 +3,7 @@ import * as turf from "@turf/turf";
 import { PROCESS_TYPES, DEFAULT_TRUCK_TURN_RADIUS_M } from "../constants";
 import { generateBlocks, validateLayout } from "../utils/geometry";
 import { HeatmapPanel } from "./heatmap-panel";
-import { ExportMenu } from "./export-menu";
+import { ExportSection } from "./export-section";
 
 // -----------------------------
 // Controls (UI panel)
@@ -114,7 +114,7 @@ export function ControlSection({
           setValidation(issues);
         }}>Run Checks</button>
  
-        <ExportMenu site={site} blocks={blocks} />
+        <ExportSection site={site} blocks={blocks} />
       </div>
  
       <HeatmapPanel site={site} heat={heat} setHeat={setHeat} />
