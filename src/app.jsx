@@ -3,7 +3,7 @@ import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-draw/dist/leaflet.draw.css";
 import * as turf from "@turf/turf";
-import { ControlSection } from "./components/control-section";
+import { ControlSection } from "./components/ControlSection";
 import { MapWithDraw } from "./components/map-with-draw";
 import { buildRect, gridCenters, generateBlocks, snapLngLat, snapFeatureToGrid, validateLayout } from "./utils/geometry";
  
