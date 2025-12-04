@@ -7,6 +7,9 @@ import { EditControl } from "react-leaflet-draw";
 import { PROCESS_TYPES } from "../constants";
 import { layerToFeature, snapFeatureToGrid } from "../utils/geometry";
 
+// Prevent "type" conflict in Leaflet Draw (https://github.com/Leaflet/Leaflet.draw/issues/1026)
+window.type = true; // Doesn't matter what value to put here, just initialize the thing
+
 // -----------------------------
 // Map + Draw (v4-friendly ref handling)
 // -----------------------------
@@ -112,6 +115,16 @@ export function MapWithDraw({ site, setSite, blocks, setBlocks, validation, heat
         onCreated={onCreated}
         onEdited={onEdited}
         onDeleted={onDeleted}
+
+        // Corrected props to avoid the bug:
+        // draw={{
+        //   polygon: { allowIntersection: false, showArea: false, metric: true, repeatMode: true, shapeOptions: { color: "var(--color-blue-600)" } },
+        //   polyline: { metric: true, shapeOptions: { color: "var(--color-emerald-500)" } },
+        //   rectangle: { showArea: false, metric: true, shapeOptions: { color: "var(--color-amber-500)" } },
+        //   circle: false,
+        //   circlemarker: false,
+        //   marker: false,
+        // }}
         draw={{
           polygon: { allowIntersection: false, showArea: true, metric: true, repeatMode: true, shapeOptions: { color: "var(--color-blue-600)" } },
           polyline: { metric: true, shapeOptions: { color: "var(--color-emerald-500)" } },
