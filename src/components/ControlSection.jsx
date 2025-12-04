@@ -3,7 +3,7 @@ import * as turf from "@turf/turf";
 import { PROCESS_TYPES, DEFAULT_TRUCK_TURN_RADIUS_M } from "../constants";
 import { generateBlocks, validateLayout } from "../utils/geometry";
 import { HeatmapSection } from "./heatmap-section";
-import { ExportSection } from "./export-section";
+import { ExportSection } from "./ExportSection";
 
 // -----------------------------
 // Controls (UI panel)
