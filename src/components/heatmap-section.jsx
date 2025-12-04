@@ -4,7 +4,7 @@ import { generateHeatSquares } from "../utils/geometry";
 // -----------------------------
 // Heatmap Panel
 // -----------------------------
-export function HeatmapPanel({ site, heat, setHeat }) {
+export function HeatmapSection({ site, heat, setHeat }) {
   const mode = heat.mode || "flow";
   const cell = heat.cell || 10;
  

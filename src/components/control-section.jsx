@@ -2,7 +2,7 @@ import { useState } from "react";
 import * as turf from "@turf/turf";
 import { PROCESS_TYPES, DEFAULT_TRUCK_TURN_RADIUS_M } from "../constants";
 import { generateBlocks, validateLayout } from "../utils/geometry";
-import { HeatmapPanel } from "./heatmap-panel";
+import { HeatmapSection } from "./heatmap-section";
 import { ExportSection } from "./export-section";
 
 // -----------------------------
@@ -117,7 +117,7 @@ export function ControlSection({
         <ExportSection site={site} blocks={blocks} />
       </div>
  
-      <HeatmapPanel site={site} heat={heat} setHeat={setHeat} />
+      <HeatmapSection site={site} heat={heat} setHeat={setHeat} />
  
       <div className="rounded-xl border p-3 text-xs bg-gray-50 leading-relaxed">
         <p className="font-medium mb-1">How to use</p>
