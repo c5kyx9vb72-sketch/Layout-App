@@ -31,7 +31,7 @@ export function ControlSection({
  
   return (
     <div 
-      className="absolute top-4 left-4 z-[1000] w-[450px] max-h-[90vh] overflow-auto bg-white/90 backdrop-blur rounded-2xl shadow-xl p-4 space-y-4"
+      className="absolute top-4 left-14 z-[1000] w-[450px] max-h-[90vh] overflow-auto bg-white/90 backdrop-blur rounded-2xl shadow-xl p-4 space-y-4"
       onMouseDown={(e) => e.stopPropagation()}
       onDoubleClick={(e) => e.stopPropagation()}
       onWheel={(e) => e.stopPropagation()}
